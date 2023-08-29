@@ -12,6 +12,6 @@ const Category = connection.define(' categories', {
     }
 })
 
-Category.sync({force:true}) // remover
+//Category.sync({force:true}) // remover
 
 module.exports = Category
