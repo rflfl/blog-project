@@ -32,7 +32,7 @@ connection
 
 
 app.use("/", categoriesController)
-// app.use("/", articlesController)
+app.use("/", articlesController)
 
 app.get('/', (req, res) => {
     res.render('index')

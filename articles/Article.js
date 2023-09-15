@@ -11,7 +11,7 @@ const Article = connection.define('articles', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    bocy: {
+    body: {
         type: Sequelize.TEXT,
         allowNull: false
     }
@@ -20,6 +20,6 @@ const Article = connection.define('articles', {
 Category.hasMany(Article)
 Article.belongsTo(Category)
 
-//Article.sync({force:true}) //remover
+// Article.sync({force:true}) //remover
 
 module.exports = Article

@@ -2,8 +2,8 @@
     <%- include ('../../partials/navbar.ejs')%>
         <div class="container">
             <hr>
-            <h2>Categorias</h2>
-            <a href="/admin/categories/new" class="btn btn-success">Criar nova categoria</a>
+            <h2>Articles</h2>
+            <a href="/admin/articles/new" class="btn btn-success">Criar nova categoria</a>
             <hr>
             <table class="table table-bordered">
                 <thead>
@@ -11,20 +11,20 @@
                         <th>ID</th>
                         <th>Título</th>
                         <th>Slug</th>
+                        <th>Categoria</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% categories.forEach(category=> { %>
+                    <% articles.forEach(article=> { %>
                         <tr>
-                            <td><%= category.id %></td>
-                            <td><%= category.title %></td>
-                            <td><%= category.slug %></td>
-                            <td>
-                                <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-sm btn-warning">Editar</a>
-                                
-                                <form method="POST" action="/categories/delete" style="display: inline;" onsubmit="confirmarExclusao(event,this)">
-                                    <input type="hidden" name="id" value="<%= category.id %>">
+                            <td><%= article.id %></td>
+                            <td><%= article.title %></td>
+                            <td><%= article.slug %></td>
+                            <td><%= article.categoryId %></td>
+                            <td>                                
+                                <form method="POST" action="/article/delete" style="display: inline;" onsubmit="confirmarExclusao(event,this)">
+                                    <input type="hidden" name="id" value="<%= article.id %>">
                                     <button class="btn btn-sm btn-danger">Deletar</button>
                                 </form>
                             </td>
@@ -36,7 +36,7 @@
         <script>
             function confirmarExclusao(event, form){
                 event.preventDefault()
-                let decision = confirm("Você deseja deletar este artigo?")
+                let decision = confirm("Você deseja deletar esta categoria?")
                 if(decision){
                     form.submit()
                 }
