@@ -21,9 +21,9 @@
                             <td><%= category.title %></td>
                             <td><%= category.slug %></td>
                             <td>
-                                <button class="btn btn-sm btn-warning">Editar</button>
+                                <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-sm btn-warning">Editar</a>
                                 
-                                <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmaExclusao(event,this)">
+                                <form method="POST" action="/categories/delete" style="display: inline;" onsubmit="confirmarExclusao(event,this)">
                                     <input type="hidden" name="id" value="<%= category.id %>">
                                     <button class="btn btn-sm btn-danger">Deletar</button>
                                 </form>
@@ -34,8 +34,8 @@
             </table>
         </div>
         <script>
-            function confirmaExclusao(event, form){
-                event.preventDefgault()
+            function confirmarExclusao(event, form){
+                event.preventDefault()
                 let decision = confirm("Você deseja deletare esta categoria?")
                 if(decision){
                     form.submit()
